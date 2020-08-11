@@ -1,4 +1,7 @@
 package webApp;
+
+import javax.servlet.http.HttpServlet;
+
 /**
  * 
  */
@@ -7,6 +10,8 @@ package webApp;
  * @author Vadims
  *
  */
-public class User {
-
+public class User extends HttpServlet{
+	public User(){
+		
+	}
 }

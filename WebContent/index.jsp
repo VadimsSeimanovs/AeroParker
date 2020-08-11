@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Welcome to the Webpage</title>
+<title>AeroParker Registration</title>
 </head>
 <body>
 	<div>
 		<h1>Registration Form</h1>
 	</div>
-	<section class= "" id = "main-form">
+	<form action = "Register" class= "" id = "main-form" method = "POST">
 	<label>Select your title:</label>
 	<select name = "title" id = "title">
 		<option value= "Sir">Sir</option>
@@ -37,7 +37,7 @@
 	<input type="text" id="postcode" name="postcode"><br></br>
 	<label>Enter your Telephone number:</label>
 	<input type="number" id="telephone" name="telephone"><br></br>
-	<input type="button" name="Submit" id="submit" value="Submit">
-	</section>
+	<input type="submit" name="Submit" id="submit" value="Submit">
+	</form>
 </body>
 </html>
