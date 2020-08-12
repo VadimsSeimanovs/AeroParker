@@ -1,6 +1,7 @@
 package net.aeroparker.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.Context;
@@ -12,20 +13,32 @@ import com.mysql.jdbc.PreparedStatement;
 import net.aeroparker.model.User;
 
 public class Database {
-	public int registerUser(User user)  throws ClassNotFoundException{
-		int result = 0;
+	
+	Connection con;
+	
+	public void databaseConnect() throws ClassNotFoundException{
 		String url = "jdbc:mysql://localhost:3306/AeroParker";
 		String username = "root";
 		String password = "AeroParker123";
 		Class.forName("com.mysql.jdbc.Driver");
+		
+		try {
+		     con = DriverManager.getConnection(url, username, password);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public int registerUser(User user)  throws ClassNotFoundException{
+		int result = 0;
+
 		String INSERT_USERS_SQL = "INSERT INTO aeroparker.customers " + 
-	"(ID, REGISTERED, E-MAIL ADDRESS, TITLE, FIRST NAME, LAST NAME, ADDRESS LINE 1, ADDRESS LINE 2, CITY, POSTCODE, TELEPHONE NUMBER) VALUES " +
+	"(REGISTERED, E-MAIL ADDRESS, TITLE, FIRST NAME, LAST NAME, ADDRESS LINE 1, ADDRESS LINE 2, CITY, POSTCODE, TELEPHONE NUMBER) VALUES " +
 		"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {
-		     Connection con = DriverManager.getConnection(url, username, password);
+
 
 		     System.out.println("Connected!");
-		     System.out.println("Test");
 		   
 		     PreparedStatement preparedStatement = (PreparedStatement) con.prepareStatement(INSERT_USERS_SQL);
 			preparedStatement.setString(2, user.getRegisteredTime());
@@ -45,13 +58,21 @@ public class Database {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		System.out.println("Test here!");
+		}	
 		return result;
 	}
 	 
-	 public void insertSql() {
-		 
-	 }
+	public void checkEmail(String email) throws SQLException {
+		String sql = "SELECT " + "'E-MAIL ADDRESS' " + "FROM aeroparker.customers WHERE " + "'E-MAIL ADDRESS' " + "= ?";
+		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(sql);
+		prepStm.setString(1, email);
+		
+		ResultSet rs = prepStm.executeQuery();
+		System.out.println(prepStm);
+		if (rs.next()) {
+			System.out.println("Row with email found");
+			} else {
+			System.out.println("Email doesnt exist");
+		}
+	}
 }

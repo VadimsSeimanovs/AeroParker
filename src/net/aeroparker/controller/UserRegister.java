@@ -51,12 +51,15 @@ public class UserRegister extends HttpServlet {
 		String city = request.getParameter("city");
 		String postcode = request.getParameter("postcode");
 		String phoneNumber = request.getParameter("telephone");
+		
 		int number = Integer.parseInt(phoneNumber);
 		User user = new User(title, email,firstname, surname, address, addressTwo, city, postcode, number);
 		
 		
 		try {
 			Database database = new Database();
+			database.databaseConnect();
+			database.checkEmail(email);
 			database.registerUser(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

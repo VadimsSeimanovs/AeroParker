@@ -28,7 +28,7 @@ public class User extends HttpServlet{
 	
 	public User(String title, String email, String firstName, String lastName, String addressLineOne, String addressLineTwo, String city, String postcode, int phoneNumber){
 		this.title = title;
-		this.email = email;
+		this.email = email.toLowerCase();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.addressLineOne = addressLineOne;
@@ -52,7 +52,7 @@ public class User extends HttpServlet{
 		return email;
 	}
 	public void setEmail(String email) {
-		this.email = email;
+		this.email = email.toLowerCase();
 	}
 	public String getTitle() {
 		return title;
@@ -102,6 +102,4 @@ public class User extends HttpServlet{
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
 }
