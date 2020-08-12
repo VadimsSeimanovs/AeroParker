@@ -10,7 +10,7 @@
 	<div>
 		<h1>Registration Form</h1>
 	</div>
-	<form action = "Register" class= "" id = "main-form" method = "POST">
+	<form action = "<%= request.getContextPath() %>/UserRegister" class= "" id = "main-form" method = "POST">
 	<label>Select your title:</label>
 	<select name = "title" id = "title">
 		<option value= "Sir">Sir</option>
@@ -30,7 +30,7 @@
 	<label>Enter your Address:</label>
 	<input type="text" id="address" name="address"><br></br>
 	<label>Enter your Address 2:</label>
-	<input type="text" id="address-2" name="address-2"><br></br>
+	<input type="text" id="address-two" name="address-two"><br></br>
 	<label>Enter your City:</label>
 	<input type="text" id="city" name="city"><br></br>
 	<label>Enter your Postcode:</label>
