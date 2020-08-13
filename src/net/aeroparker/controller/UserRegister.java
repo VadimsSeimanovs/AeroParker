@@ -80,7 +80,6 @@ public class UserRegister extends HttpServlet {
 				if(database.checkEmail(email)) {
 					emailErr = true;
 					request.setAttribute("emailError", "Email already used!");
-					
 				}
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
@@ -93,7 +92,8 @@ public class UserRegister extends HttpServlet {
 			//System.out.println("Check for firstname");
 			request.setAttribute("firstNameError", "Firstname not valid!");
 		}
-		System.out.println(longTextValidation(address));
+		
+//		System.out.println(longTextValidation(address));
 		if(shortTextValidation(surname)) {
 			surnameErr = true;
 			//System.out.println("Check for surname");
@@ -117,10 +117,11 @@ public class UserRegister extends HttpServlet {
 		}
 		
 		if(longTextValidation(city)) {
+			System.out.println("Check for City:" + city);
 			cityErr = true;
-			//System.out.println("Check for City");
 			request.setAttribute("cityError", "City not valid!");
 		}
+		
 		if(phoneNumber != "") {
 			if(phoneNumberValidation(phoneNumber)) {
 				//System.out.println("Check for phoneNumber");
@@ -137,18 +138,22 @@ public class UserRegister extends HttpServlet {
 		}
 		
 		System.out.println("Email: " + emailErr + " name: " + nameErr + " addressErr: " +addressErr);
+		System.out.println("City: " + cityErr + " phoneNumber: " + phoneNumErr + " postcode: " + postCodeErr);
 		
 		if(emailErr == false &&  nameErr == false && surnameErr == false & addressErr == false && addressTwoErr == false && cityErr == false && postCodeErr == false && phoneNumErr == false) {
 			System.out.println(emailValidation(email));
 			
-			int number = Integer.parseInt(phoneNumber);
-			
-			User user = new User(title, email, firstname, surname, address, addressTwo, city, postcode, number);
+			int number = 0;
+			if(phoneNumber != "") {
+				System.out.println("phone number is:" + number);
+//				number = Integer.parseInt(phoneNumber);
+			}
+			System.out.println("phone number2 is:" + number);
+			User user = new User(title, email, firstname, surname, address, addressTwo, city, postcode, phoneNumber);
 				
 			try {
 				Database database = new Database();
 				database.databaseConnect();
-				//database.checkEmail(email);
 				database.registerUser(user);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -176,7 +181,7 @@ public class UserRegister extends HttpServlet {
 	
 	private boolean emailValidation(String email) {
 		String regex = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,})+)$";
-		if(email.matches(regex) == true) {
+		if(email.matches(regex)) {
 			emailErr = false;
 			return emailErr;
 		}else {
@@ -198,7 +203,7 @@ public class UserRegister extends HttpServlet {
 	}
 	
 	private boolean longTextValidation(String longText) {
-		String regex = "[a-zA-Z]*";
+		String regex = "^[\\D\\d]*(\\\\s[\\D\\d]*$)?";
 		if(longText.matches(regex) == true) {
 			return false;
 		}else {
@@ -218,7 +223,7 @@ public class UserRegister extends HttpServlet {
 	}
 	
 	private boolean shortTextValidation(String shortText) {
-		String regex = "[a-zA-Z]*";
+		String regex = "[\\D\\d]*";
 		if(shortText.length() <= 50) {
 			if(shortText.matches(regex) == true) {
 				return false;
@@ -229,5 +234,4 @@ public class UserRegister extends HttpServlet {
 			return true;
 		}
 	}
-	
 }

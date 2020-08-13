@@ -50,7 +50,7 @@ public class Database {
 			preparedStatement.setString(7,user.getAddressLineTwo());
 			preparedStatement.setString(8,user.getCity());
 			preparedStatement.setString(9,user.getPostcode());
-			preparedStatement.setInt(10,user.getPhoneNumber());
+			preparedStatement.setString(10,user.getPhoneNumber());
 			
 			System.out.println("Here is statement");
 			System.out.println(preparedStatement);

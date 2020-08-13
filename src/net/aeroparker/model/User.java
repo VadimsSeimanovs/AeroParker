@@ -24,9 +24,9 @@ public class User extends HttpServlet{
 	private String addressLineTwo;
 	private String city;
 	private String postcode;
-	private int phoneNumber;
+	private String phoneNumber;
 	
-	public User(String title, String email, String firstName, String lastName, String addressLineOne, String addressLineTwo, String city, String postcode, int phoneNumber){
+	public User(String title, String email, String firstName, String lastName, String addressLineOne, String addressLineTwo, String city, String postcode, String phoneNumber){
 		this.title = title;
 		this.email = email.toLowerCase();
 		this.firstName = firstName;
@@ -96,10 +96,10 @@ public class User extends HttpServlet{
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 }

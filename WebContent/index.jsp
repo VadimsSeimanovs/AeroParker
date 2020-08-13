@@ -23,22 +23,16 @@
 		<option value= "Miss">Miss</option>
 		<option value= "Maam">Ma'am</option>
 		<option value= "Madam">Madam</option>
-	</select>
-	<div class="form-group-row">
+	</select><br></br>
 	<label>Enter your name:*</label><div style="color: #FF0000;">${firstNameError}</div>
 	<input type="text" id="firstname" name="firstname" value="${firstname}"><br></br>
-	</div>
 	
-	<div class="form-group-row">
 	<label>Enter your surname:*</label><div style="color: #FF0000;">${surnameError}</div>
 	<input type="text" id="surname" name="surname" required value="${surname}"><br></br>
-	</div>
 	
-	<div class="form-group">
 	<label for="email">Enter your e-mail address:*</label><div style="color: #FF0000;">${emailError}</div>
 	<input type="text" id="email" name="email" required value="${email}" placeholder="Enter email">
 	<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-	</div>
 	
 	<label>Enter your Address:*</label><div style="color: #FF0000;">${addressError}</div>
 	<input type="text" id="address" name="address" required value="${address}"><br></br>
@@ -70,10 +64,10 @@
 
             if(name !== "" && surname !== "" && email !== "" && address !== "" && city !== "" && postcode !== ""){
                 $('#submit').removeAttr('disabled');
-                console.log("Test Passed!")
+                //console.log("Test Passed!")
             }else{
                 $('#submit').attr('disabled', 'disabled');
-                console.log("Test Failed!")
+                //console.log("Test Failed!")
             }
         });
     })()
