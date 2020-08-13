@@ -8,11 +8,8 @@
 <title>Registration Page</title>
 </head>
 <body>
-<div class="progress">
-  <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
 	<div>
-		<h1>Registration Form</h1>
+		<h1 style="margin-left: 30%;">Registration Form</h1>
 	</div>
 	<form action = "<%= request.getContextPath() %>/Register" name="form" id ="main-form" method="POST">
 	<label style="margin-left: 30%;">Select your title:</label>
@@ -25,34 +22,33 @@
 		<option value= "Maam">Ma'am</option>
 		<option value= "Madam">Madam</option>
 	</select><br></br>
-	<label>Enter your name:*</label><div style="color: #FF0000;">${firstNameError}</div>
-	<input type="text" id="firstname" name="firstname" value="${firstname}"><br></br>
+	<label style="margin-left: 30%;">Enter your name:*</label><div style="color: #FF0000;">${firstNameError}</div>
+	<input style="margin-left: 30%;" type="text" id="firstname" name="firstname" value="${firstname}"><br></br>
 	
-	<label>Enter your surname:*</label><div style="color: #FF0000;">${surnameError}</div>
-	<input type="text" id="surname" name="surname" required value="${surname}"><br></br>
+	<label style="margin-left: 30%;">Enter your surname:*</label><div style="color: #FF0000;">${surnameError}</div>
+	<input style="margin-left: 30%;" type="text" id="surname" name="surname" required value="${surname}"><br></br>
 	
-	<label for="email">Enter your e-mail address:*</label><div style="color: #FF0000;">${emailError}</div>
-	<input type="text" id="email" name="email" required value="${email}" placeholder="Enter email">
-	<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	<label style="margin-left: 30%;" for="email">Enter your e-mail address:*</label><div style="color: #FF0000;">${emailError}</div>
+	<input style="margin-left: 30%;" type="text" id="email" name="email" required value="${email}" placeholder="Enter email">
+	<small style="margin-left: 30%;" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	
-	<label>Enter your Address:*</label><div style="color: #FF0000;">${addressError}</div>
-	<input type="text" id="address" name="address" required value="${address}"><br></br>
+	<label style="margin-left: 30%;">Enter your Address:*</label><div style="color: #FF0000;">${addressError}</div>
+	<input style="margin-left: 30%;" type="text" id="address" name="address" required value="${address}"><br></br>
 	
-	<label>Enter your Address 2:</label><div style="color: #FF0000;">${addressTwoError}</div>
-	<input type="text" id="address-two" name="address-two" value="${addressTwo}"><br></br>
+	<label style="margin-left: 30%;">Enter your Address 2:</label><div style="color: #FF0000;">${addressTwoError}</div>
+	<input style="margin-left: 30%;" type="text" id="address-two" name="address-two" value="${addressTwo}"><br></br>
 	
-	<label>Enter your City:*</label><div style="color: #FF0000;">${cityError}</div>
-	<input type="text" id="city" name="city" required value="${city}"><br></br>
+	<label style="margin-left: 30%;">Enter your City:*</label><div style="color: #FF0000;">${cityError}</div>
+	<input style="margin-left: 30%;" type="text" id="city" name="city" required value="${city}"><br></br>
 	
-	<label>Enter your Postcode:*</label><div style="color: #FF0000;">${postCodeError}</div>
-	<input type="text" id="postcode" name="postcode" required value="${postcode}"><br></br>
+	<label style="margin-left: 30%;">Enter your Postcode:*</label><div style="color: #FF0000;">${postCodeError}</div>
+	<input style="margin-left: 30%;" type="text" id="postcode" name="postcode" required value="${postcode}"><br></br>
 	
-	<label>Enter your Telephone number:</label><div style="color: #FF0000;">${phoneError}</div>
-	<input type="text" id="telephone" name="telephone" value="${telephone}"><br></br>
+	<label style="margin-left: 30%;">Enter your Telephone number:</label><div style="color: #FF0000;">${phoneError}</div>
+	<input style="margin-left: 30%;" type="text" id="telephone" name="telephone" value="${telephone}"><br></br>
 	
-	<input type="submit" name="Submit" id="submit" value="Submit" disabled = "disabled" class="btn btn-primary">
+	<input style="margin-left: 35%;" type="submit" name="Submit" id="submit" value="Submit" disabled = "disabled" class="btn btn-primary">
 	</form>
-	<input id="hiddenUrl" style="display:none" value=""></input>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 	<script type="text/javascript">
     (function (){

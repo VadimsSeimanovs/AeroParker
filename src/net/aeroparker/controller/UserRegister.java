@@ -18,7 +18,9 @@ import net.aeroparker.dao.Database;
 import net.aeroparker.model.User;
 
 /**
+ * This is a controller class that manipulates all the data that have been inputed and retrieves the data using model and database class
  * Servlet implementation class UserRegister
+ * @author Vadims Seimanovs
  */
 @WebServlet("/Register/*")
 public class UserRegister extends HttpServlet {
@@ -132,8 +134,7 @@ public class UserRegister extends HttpServlet {
 			request.setAttribute("addressError", "Address not valid!");
 		}
 
-		// Validation of second address which is optional so it will also check if it is
-		// inputted
+		// Validation of second address which is optional so it will also check if it is inputted
 		if (addressTwo != "") {
 			if (longTextValidation(addressTwo)) {
 				addressTwoErr = true;
@@ -176,7 +177,7 @@ public class UserRegister extends HttpServlet {
 				&& cityErr == false && postCodeErr == false && phoneNumErr == false) {
 			// User object is being declared and creating
 			User user = new User(title, email, firstname, surname, address, addressTwo, city, postcode, phoneNumber);
-
+			
 			try {
 				database.registerUser(user);
 				int customerID = database.getCustomerId(email);
@@ -186,9 +187,12 @@ public class UserRegister extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/Success.jsp");
 			dispatcher.forward(request, response);
 		} else {
+			//If form fails to be validated then the records should be placed where they initially have been entered
+			//As well as refreshing the page with the requests that have been inputted
 			// System.out.println(address);
 			request.setAttribute("email", email);
 			request.setAttribute("firstname", firstname);
@@ -201,7 +205,11 @@ public class UserRegister extends HttpServlet {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 	}
-
+	
+	/*
+	 * Method that checks the inputed email against the regex
+	 * 
+	 */
 	private boolean emailValidation(String email) {
 		String regex = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,})+)$";
 		if (email.matches(regex)) {
@@ -212,7 +220,11 @@ public class UserRegister extends HttpServlet {
 			return emailErr;
 		}
 	}
-
+	
+	/*
+	 * Method that checks the inputed phone number against the regex
+	 * 
+	 */
 	private boolean phoneNumberValidation(String phoneNumber) {
 		String regex = "^\\+?\\d{11,20}";
 
@@ -224,7 +236,11 @@ public class UserRegister extends HttpServlet {
 			return phoneNumErr;
 		}
 	}
-
+	
+	/*
+	 * Method that checks the inputed address, city against the regex
+	 * 
+	 */
 	private boolean longTextValidation(String longText) {
 		String regex = "^[a-zA-Z\\d]*(\\s[a-zA-Z\\d]*$)?";
 		if (longText.matches(regex) == true) {
@@ -233,7 +249,11 @@ public class UserRegister extends HttpServlet {
 			return true;
 		}
 	}
-
+	
+	/*
+	 * Method that checks the inputed postcode against the regex
+	 * 
+	 */
 	private boolean postcodeValidation(String postCode) {
 		String regex = "^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\\s?[0-9][A-Za-z]{2})$";
 		if (postCode.matches(regex) == true) {
@@ -244,7 +264,11 @@ public class UserRegister extends HttpServlet {
 			return postCodeErr;
 		}
 	}
-
+	
+	/*
+	 * Method that checks the inputed name, surname against the regex
+	 * 
+	 */
 	private boolean shortTextValidation(String shortText) {
 		String regex = "^[a-zA-Z\\d]*(\\s[a-zA-Z\\d]*$)?";
 		if (shortText.length() <= 50) {

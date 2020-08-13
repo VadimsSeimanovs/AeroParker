@@ -12,12 +12,19 @@ import com.mysql.jdbc.PreparedStatement;
 
 import net.aeroparker.model.User;
 
+/*
+ * This is a Database class which manages all the statement and connections related with the database.
+ * @author Vadims Seimanovs
+ */
 public class Database {
 	
 	protected Connection con;
 	protected int customerID;
 	protected int siteID;
 	
+	/*
+	 * Method that establishes connection to the database so that it doesnt have to be called a lot of times
+	 */
 	public void databaseConnect() throws ClassNotFoundException{
 		String url = "jdbc:mysql://localhost:3306/AeroParker";
 		String username = "root";
@@ -31,6 +38,11 @@ public class Database {
 		}
 	}
 	
+	/*
+	 * Method for registering users and inserting their records into the database
+	 * @param user
+	 * @return result
+	 */
 	public int registerUser(User user)  throws ClassNotFoundException{
 		int result = 0;
 
@@ -64,7 +76,11 @@ public class Database {
 		}	
 		return result;
 	}
-	 
+	/*
+	 * Method for checking if the email record is already existing in the database
+	 * @param email
+	 * @return boolean
+	 */
 	public boolean checkEmail(String email) throws SQLException {
 		String sql = "SELECT " + "`E-MAIL ADDRESS` " + "FROM aeroparker.customers WHERE " + "`E-MAIL ADDRESS` " + "= ?";
 		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(sql);
@@ -79,6 +95,12 @@ public class Database {
 		}
 	}
 	
+	/*
+	 * Method for getting the customerID based on the email that they have provided
+	 * This method is used in the Controller class: UserRegister
+	 * @param email
+	 * @return customerID
+	 */
 	public int getCustomerId(String email) throws SQLException{
 		String customerIdSql = "SELECT `ID` FROM aeroparker.customers WHERE `E-MAIL ADDRESS` = ?";
 		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(customerIdSql);
@@ -94,6 +116,12 @@ public class Database {
 		return customerID;
 	}
 	
+	/*
+	 * Method for getting the siteID from the sites database
+	 * This method is used in the controller class: UserRegister
+	 * @param site
+	 * @return siteID
+	 */
 	public int getSiteId(String site) throws SQLException{
 		String siteIdSql = "SELECT `ID` FROM aeroparker.sites WHERE `NAME` = ?";
 		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(siteIdSql);
@@ -107,6 +135,11 @@ public class Database {
 		System.out.println("SiteID: " + siteID);
 		return siteID;
 	}
+	
+	/*
+	 * Method for inserting the siteID and customerID into the relational database
+	 * @param siteID, customerID
+	 */
 	
 	public void insertSite(int siteID, int customerID) throws SQLException{
 		String siteIdSql = "INSERT INTO aeroparker.`customer sites` (CUSTOMER_ID, SITE_ID) VALUES (?, ?)";
