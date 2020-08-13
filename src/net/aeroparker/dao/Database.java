@@ -62,7 +62,7 @@ public class Database {
 		return result;
 	}
 	 
-	public void checkEmail(String email) throws SQLException {
+	public boolean checkEmail(String email) throws SQLException {
 		String sql = "SELECT " + "'E-MAIL ADDRESS' " + "FROM aeroparker.customers WHERE " + "'E-MAIL ADDRESS' " + "= ?";
 		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(sql);
 		prepStm.setString(1, email);
@@ -70,9 +70,11 @@ public class Database {
 		ResultSet rs = prepStm.executeQuery();
 		System.out.println(prepStm);
 		if (rs.next()) {
-			System.out.println("Row with email found");
+			return true;
 			} else {
-			System.out.println("Email doesnt exist");
+			return false;
 		}
 	}
+	
+	
 }
