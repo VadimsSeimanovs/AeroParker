@@ -5,16 +5,17 @@
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <meta charset="ISO-8859-1">
-<title>AeroParker Registration</title>
+<title>Registration Page</title>
 </head>
 <body>
-	
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 	<div>
 		<h1>Registration Form</h1>
 	</div>
-	<form action = "<%= request.getContextPath() %>/UserRegister" name="form" id = "main-form" method = "POST">
-	<label>Select your title:</label>
-	
+	<form action = "<%= request.getContextPath() %>/Register" name="form" id ="main-form" method="POST">
+	<label style="margin-left: 30%;">Select your title:</label>
 	<select name = "title" id = "title" required>
 		<option value= "Sir">Sir</option>
 		<option value= "Mr">Mr</option>
@@ -47,10 +48,11 @@
 	<input type="text" id="postcode" name="postcode" required value="${postcode}"><br></br>
 	
 	<label>Enter your Telephone number:</label><div style="color: #FF0000;">${phoneError}</div>
-	<input type="number" id="telephone" name="telephone" value="${telephone}"><br></br>
+	<input type="text" id="telephone" name="telephone" value="${telephone}"><br></br>
 	
 	<input type="submit" name="Submit" id="submit" value="Submit" disabled = "disabled" class="btn btn-primary">
 	</form>
+	<input id="hiddenUrl" style="display:none" value=""></input>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 	<script type="text/javascript">
     (function (){

@@ -25,6 +25,7 @@ public class User extends HttpServlet{
 	private String city;
 	private String postcode;
 	private String phoneNumber;
+	private String site = "AvaloneCity";
 	
 	public User(String title, String email, String firstName, String lastName, String addressLineOne, String addressLineTwo, String city, String postcode, String phoneNumber){
 		this.title = title;
@@ -101,5 +102,11 @@ public class User extends HttpServlet{
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public void setSite(String site) {
+		this.site = site;
+	}
+	public String getSite() {
+		return site;
 	}
 }

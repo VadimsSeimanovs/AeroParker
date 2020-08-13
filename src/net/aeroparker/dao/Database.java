@@ -14,7 +14,9 @@ import net.aeroparker.model.User;
 
 public class Database {
 	
-	Connection con;
+	protected Connection con;
+	protected int customerID;
+	protected int siteID;
 	
 	public void databaseConnect() throws ClassNotFoundException{
 		String url = "jdbc:mysql://localhost:3306/AeroParker";
@@ -64,7 +66,7 @@ public class Database {
 	}
 	 
 	public boolean checkEmail(String email) throws SQLException {
-		String sql = "SELECT " + "'E-MAIL ADDRESS' " + "FROM aeroparker.customers WHERE " + "'E-MAIL ADDRESS' " + "= ?";
+		String sql = "SELECT " + "`E-MAIL ADDRESS` " + "FROM aeroparker.customers WHERE " + "`E-MAIL ADDRESS` " + "= ?";
 		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(sql);
 		prepStm.setString(1, email);
 		
@@ -72,10 +74,49 @@ public class Database {
 		System.out.println(prepStm);
 		if (rs.next()) {
 			return true;
-			} else {
+		} else {
 			return false;
 		}
 	}
 	
+	public int getCustomerId(String email) throws SQLException{
+		String customerIdSql = "SELECT `ID` FROM aeroparker.customers WHERE `E-MAIL ADDRESS` = ?";
+		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(customerIdSql);
+		prepStm.setString(1, email);
+		ResultSet rs = prepStm.executeQuery();
+		
+		//Store the CustomerID
+		System.out.println(prepStm);
+		if(rs.next()){
+			customerID = rs.getInt("ID");
+		}
+		System.out.println("CustomerID: " + customerID);
+		return customerID;
+	}
+	
+	public int getSiteId(String site) throws SQLException{
+		String siteIdSql = "SELECT `ID` FROM aeroparker.sites WHERE `NAME` = ?";
+		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(siteIdSql);
+		prepStm.setString(1, site);
+		ResultSet rs = prepStm.executeQuery();
+		System.out.println(prepStm);
+		
+		if(rs.next()){
+			siteID = rs.getInt("ID");
+		}
+		System.out.println("SiteID: " + siteID);
+		return siteID;
+	}
+	
+	public void insertSite(int siteID, int customerID) throws SQLException{
+		String siteIdSql = "INSERT INTO aeroparker.`customer sites` (CUSTOMER_ID, SITE_ID) VALUES (?, ?)";
+		PreparedStatement prepStm = (PreparedStatement) con.prepareStatement(siteIdSql);
+		prepStm.setInt(1, customerID);
+		prepStm.setInt(2, siteID);
+		
+		System.out.println(prepStm);
+		
+		prepStm.executeUpdate();
+	}
 	
 }
