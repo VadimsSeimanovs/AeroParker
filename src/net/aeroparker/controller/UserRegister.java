@@ -90,26 +90,26 @@ public class UserRegister extends HttpServlet {
 		
 		if(shortTextValidation(firstname)) {
 			nameErr = true;
-			System.out.println("Check for firstname");
+			//System.out.println("Check for firstname");
 			request.setAttribute("firstNameError", "Firstname not valid!");
 		}
 		System.out.println(longTextValidation(address));
 		if(shortTextValidation(surname)) {
 			surnameErr = true;
-			System.out.println("Check for surname");
+			//System.out.println("Check for surname");
 			request.setAttribute("surnameError", "Surname not valid!");
 		}
 		
 		if(longTextValidation(address)) {
 			addressErr = true;
-			System.out.println("Check for address");
+			//System.out.println("Check for address");
 			request.setAttribute("addressError", "Address not valid!");
 		}
 		
 		if(addressTwo != "") {
 			if(longTextValidation(addressTwo)) {
 				addressTwoErr = true;
-				System.out.println("Check for addressTwo");
+				//System.out.println("Check for addressTwo");
 				request.setAttribute("addressTwoError", "Address is not valid!");
 			}
 		}else {
@@ -118,18 +118,21 @@ public class UserRegister extends HttpServlet {
 		
 		if(longTextValidation(city)) {
 			cityErr = true;
-			System.out.println("Check for City");
+			//System.out.println("Check for City");
 			request.setAttribute("cityError", "City not valid!");
 		}
-		
-		if(phoneNumberValidation(phoneNumber)) {
-			System.out.println("Check for phoneNumber");
-			request.setAttribute("phoneError", "Phone number not valid!");
+		if(phoneNumber != "") {
+			if(phoneNumberValidation(phoneNumber)) {
+				//System.out.println("Check for phoneNumber");
+				request.setAttribute("phoneError", "Phone number not valid!");
+			}
+		}else {
+			phoneNumErr = false;
 		}
 		
 		
 		if(postcodeValidation(postcode)) {
-			System.out.println("Check for postcode");
+			//System.out.println("Check for postcode");
 			request.setAttribute("postcodeError", "postcode not valid!");
 		}
 		
@@ -152,7 +155,7 @@ public class UserRegister extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			System.out.println("Redirect");
+			//System.out.println("Redirect");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/Success.jsp");
 			dispatcher.forward(request, response);
 		}

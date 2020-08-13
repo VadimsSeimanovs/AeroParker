@@ -33,28 +33,29 @@ public class Database {
 		int result = 0;
 
 		String INSERT_USERS_SQL = "INSERT INTO aeroparker.customers " + 
-	"(REGISTERED, E-MAIL ADDRESS, TITLE, FIRST NAME, LAST NAME, ADDRESS LINE 1, ADDRESS LINE 2, CITY, POSTCODE, TELEPHONE NUMBER) VALUES " +
-		"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+	"(REGISTERED, `E-MAIL ADDRESS`, TITLE, `FIRST NAME`, `LAST NAME`, `ADDRESS LINE 1`, `ADDRESS LINE 2`, CITY, POSTCODE, `TELEPHONE NUMBER`) VALUES " +
+		"(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 		try {
 
 
-		     System.out.println("Connected!");
+		     //System.out.println("Connected!");
 		   
 		     PreparedStatement preparedStatement = (PreparedStatement) con.prepareStatement(INSERT_USERS_SQL);
-			preparedStatement.setString(2, user.getRegisteredTime());
-			preparedStatement.setString(3, user.getEmail());
-			preparedStatement.setString(4,user.getTitle());
-			preparedStatement.setString(5, user.getFirstName());
-			preparedStatement.setString(6,user.getLastName());
-			preparedStatement.setString(7,user.getAddressLineOne());
-			preparedStatement.setString(8,user.getAddressLineTwo());
-			preparedStatement.setString(9,user.getCity());
-			preparedStatement.setString(10,user.getPostcode());
-			preparedStatement.setInt(11,user.getPhoneNumber());
+			preparedStatement.setString(1, user.getRegisteredTime());
+			preparedStatement.setString(2, user.getEmail());
+			preparedStatement.setString(3,user.getTitle());
+			preparedStatement.setString(4, user.getFirstName());
+			preparedStatement.setString(5,user.getLastName());
+			preparedStatement.setString(6,user.getAddressLineOne());
+			preparedStatement.setString(7,user.getAddressLineTwo());
+			preparedStatement.setString(8,user.getCity());
+			preparedStatement.setString(9,user.getPostcode());
+			preparedStatement.setInt(10,user.getPhoneNumber());
 			
+			System.out.println("Here is statement");
 			System.out.println(preparedStatement);
 			
-			//result = preparedStatement.executeUpdate();
+			result = preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
