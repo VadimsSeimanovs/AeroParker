@@ -22,29 +22,29 @@
 		<option value= "Maam">Ma'am</option>
 		<option value= "Madam">Madam</option>
 	</select><br></br>
-	<label style="margin-left: 30%;">Enter your name:*</label><div style="color: #FF0000;">${firstNameError}</div>
+	<label style="margin-left: 30%;">Enter your name:*</label><div style="color: #FF0000;margin-left: 30%;">${firstNameError}</div>
 	<input style="margin-left: 30%;" type="text" id="firstname" name="firstname" value="${firstname}"><br></br>
 	
-	<label style="margin-left: 30%;">Enter your surname:*</label><div style="color: #FF0000;">${surnameError}</div>
+	<label style="margin-left: 30%;">Enter your surname:*</label><div style="color: #FF0000;margin-left: 30%;">${surnameError}</div>
 	<input style="margin-left: 30%;" type="text" id="surname" name="surname" required value="${surname}"><br></br>
 	
-	<label style="margin-left: 30%;" for="email">Enter your e-mail address:*</label><div style="color: #FF0000;">${emailError}</div>
+	<label style="margin-left: 30%;" for="email">Enter your e-mail address:*</label><div style="color: #FF0000;margin-left: 30%;">${emailError}</div>
 	<input style="margin-left: 30%;" type="text" id="email" name="email" required value="${email}" placeholder="Enter email">
 	<small style="margin-left: 30%;" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 	
-	<label style="margin-left: 30%;">Enter your Address:*</label><div style="color: #FF0000;">${addressError}</div>
+	<label style="margin-left: 30%;">Enter your Address:*</label><div style="color: #FF0000;margin-left: 30%;">${addressError}</div>
 	<input style="margin-left: 30%;" type="text" id="address" name="address" required value="${address}"><br></br>
 	
-	<label style="margin-left: 30%;">Enter your Address 2:</label><div style="color: #FF0000;">${addressTwoError}</div>
+	<label style="margin-left: 30%;">Enter your Address 2:</label><div style="color: #FF0000;margin-left: 30%;">${addressTwoError}</div>
 	<input style="margin-left: 30%;" type="text" id="address-two" name="address-two" value="${addressTwo}"><br></br>
 	
-	<label style="margin-left: 30%;">Enter your City:*</label><div style="color: #FF0000;">${cityError}</div>
+	<label style="margin-left: 30%;">Enter your City:*</label><div style="color: #FF0000;margin-left: 30%;">${cityError}</div>
 	<input style="margin-left: 30%;" type="text" id="city" name="city" required value="${city}"><br></br>
 	
-	<label style="margin-left: 30%;">Enter your Postcode:*</label><div style="color: #FF0000;">${postCodeError}</div>
+	<label style="margin-left: 30%;">Enter your Postcode:*</label><div style="color: #FF0000;margin-left: 30%;">${postCodeError}</div>
 	<input style="margin-left: 30%;" type="text" id="postcode" name="postcode" required value="${postcode}"><br></br>
 	
-	<label style="margin-left: 30%;">Enter your Telephone number:</label><div style="color: #FF0000;">${phoneError}</div>
+	<label style="margin-left: 30%;">Enter your Telephone number:</label><div style="color: #FF0000;margin-left: 30%;">${phoneError}</div>
 	<input style="margin-left: 30%;" type="text" id="telephone" name="telephone" value="${telephone}"><br></br>
 	
 	<input style="margin-left: 35%;" type="submit" name="Submit" id="submit" value="Submit" disabled = "disabled" class="btn btn-primary">
